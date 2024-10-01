@@ -1,0 +1,14 @@
+skip WS '\s+'
+skip COMMENT '#.*'
+token THIS 'this'
+token THAT 'that'
+token THE 'the'
+token THING 'thing'
+token OTHER 'other'
+token ERROR '[? | !]'
+token LEFTBRAKET '\('
+token RIGHTBRAKET '\)'
+token ID '[A-Za-z0-9_]+'
+% 
+
+

@@ -1,47 +1,15 @@
+# grammar for a list of comma-separated numbers
+
 skip WS '\s+'
 token NUM '\d+'
-token LEFTBRAKET '\['
-token RIGHTBRAKET '\]'
+token LEFTBRACKET '\['
+token RIGHTBRACKET '\]'
 token COMMA ','
-% 
-<lon> ::= LEFTBRAKET <nums> RIGHTBRAKET
-#<nums> **= NUM 
-#<nums>:ListNone ::= 
 
-<nums>: NumsNode :== <NUM> <nums>
-<nums>: NumsNull :==
+%
 
-#<nums>:ListSome ::= NUM <nums>
-#<com>:ListComma ::= COMMA <nums>
-#<nums>:NumNull ::=
-
-
-% 
-#name of class it produces
-Lon
-
-%%%
-public void $run() {
-    #system has definition of this function and I am overriding it with my own definition
-    system.out.println("{" + this.nums.toString() + "}");
-}
-%%%
-
-NumsNode
-%%%
-#writing a parse syntax tree walker
-public String toString() {
-    return this.num.toString() + " " + this.nums.toString();
-}
-%%%
-
-NumNull
-%%%
-public String toString(){
-  /*  String s = "";
-    for(token t = this.nums){
-        s += t.toString;
-    }
-    return s; */
-}
-%%%
+<lon> ::= LEFTBRACKET <nums> RIGHTBRACKET
+<nums>:NumsNode ::= <NUM> <morenums>
+<nums>:NumsNull ::=
+<morenums>:MoreNumsNode ::= COMMA <NUM> <morenums>
+<morenums>:MoreNumsNull ::=

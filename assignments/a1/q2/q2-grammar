@@ -1,0 +1,15 @@
+#lexical specification
+skip WS '\s'
+skip COMMENT '[#]'
+token SKIP '#\w+$'
+token SYMBOL '\W'
+token WORDS '\w+'
+token ID '[A-Za-z0-9_]+'
+%
+
+#syntax
+<q2> ::= <word>
+<word>:Wordy ::= WORDS
+<word>:ID ::= ID
+<word>:Skip ::= SKIP
+<word>:Symmmm ::= SYMBOL
