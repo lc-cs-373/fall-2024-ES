@@ -1,26 +1,21 @@
+
 #lexical specification
+skip SYMBOL '\W.+'
+skip DIVIDER '%'
 skip WS '\s'
-token DIVIDER '%'
-token COMMENT '#.+$'
-token RULE '\W[a-z,A-Z,1-9].+$'
+
+token COMMENT '#.*'
 token TOKEN 'token.+$'
 token SKIP 'skip.+$'
+token ID '[A-Z].+'
+token RE '\'.*\''
+
 
 %
-
 #syntax
 <q8> ::= <line>
-<line>:One ::= <comment> 
-<line>:Two ::= <rule>
-<line>:Three ::= <divide>
-
-<comment> ::= COMMENT
-
-<rule>:Skipy ::= <skip_rule>
-<rule>:Tokens ::= <token_rule>
-
-<skip_rule> ::=  SKIP
-
-<token_rule>:Expressive ::= RULE
-<token_rule>:Optional ::=  TOKEN 
-<divide> ::= DIVIDER
+<line>:Comment ::= COMMENT
+<line>:Ruler ::= <rule>
+<rule>:Skipper ::=  SKIP 
+<rule>:TokenerFull ::=  TOKEN
+<rule>:TokenerShort ::= <ID> <RE>

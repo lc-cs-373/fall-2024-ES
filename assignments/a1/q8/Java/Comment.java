@@ -2,12 +2,12 @@
 //Comment:import//
 import java.util.*;
 
-// <comment> ::= COMMENT
-public class Comment /*Comment:class*/ {
+// <line>:Comment ::= COMMENT
+public class Comment extends Line /*Comment:class*/ {
 
     public static final String $className = "Comment";
     public static final String $ruleString =
-        "<comment> ::= COMMENT";
+        "<line>:Comment ::= COMMENT";
 
 
 
@@ -18,7 +18,7 @@ public class Comment /*Comment:class*/ {
 
     public static Comment parse(Scan scn$, Trace trace$) {
         if (trace$ != null)
-            trace$ = trace$.nonterm("<comment>", scn$.lno);
+            trace$ = trace$.nonterm("<line>:Comment", scn$.lno);
         scn$.match(Token.Match.COMMENT, trace$);
         return new Comment();
     }

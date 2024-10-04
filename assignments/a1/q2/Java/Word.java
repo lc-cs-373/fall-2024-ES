@@ -9,14 +9,12 @@ public abstract class Word /*Word:class*/ {
         Token t$ = scn$.cur();
         Token.Match match$ = t$.match;
         switch(match$) {
-        case ID:
-            return ID.parse(scn$,trace$);
-        case WORDS:
-            return Wordy.parse(scn$,trace$);
-        case SYMBOL:
-            return Symmmm.parse(scn$,trace$);
         case SKIP:
-            return Skip.parse(scn$,trace$);
+            return Skipper.parse(scn$,trace$);
+        case COMMENT:
+            return Commenter.parse(scn$,trace$);
+        case TOKEN:
+            return Tokener.parse(scn$,trace$);
         default:
             throw new PLCCException(
                 "Parse error",

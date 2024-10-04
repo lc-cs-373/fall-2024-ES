@@ -10,10 +10,11 @@ public abstract class Rule /*Rule:class*/ {
         Token.Match match$ = t$.match;
         switch(match$) {
         case SKIP:
-            return Skipy.parse(scn$,trace$);
-        case RULE:
+            return Skipper.parse(scn$,trace$);
+        case ID:
+            return TokenerShort.parse(scn$,trace$);
         case TOKEN:
-            return Tokens.parse(scn$,trace$);
+            return TokenerFull.parse(scn$,trace$);
         default:
             throw new PLCCException(
                 "Parse error",

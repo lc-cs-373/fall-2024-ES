@@ -1,15 +1,16 @@
 #lexical specification
+skip SYMBOL '\W.+'
+skip DIVIDER '%'
 skip WS '\s'
-skip COMMENT '[#]'
-token SKIP '#\w+$'
-token SYMBOL '\W'
-token WORDS '\w+'
-token ID '[A-Za-z0-9_]+'
-%
 
+token COMMENT '#.*'
+token TOKEN 'token.+$'
+token SKIP 'skip.+$'
+token ID '[A-Z].+'
+
+%
 #syntax
 <q2> ::= <word>
-<word>:Wordy ::= WORDS
-<word>:ID ::= ID
-<word>:Skip ::= SKIP
-<word>:Symmmm ::= SYMBOL
+<word>:Tokener ::= TOKEN
+<word>:Skipper ::= SKIP
+<word>:Commenter ::= COMMENT
