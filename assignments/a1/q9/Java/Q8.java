@@ -23,5 +23,9 @@ public class Q8 extends _Start /*Q8:class*/ {
         return new Q8(line);
     }
 
+    public String toString() {
+        return line.toString();
+    }
+
 //Q8//
 }

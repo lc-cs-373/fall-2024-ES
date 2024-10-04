@@ -17,12 +17,12 @@ public class Token {
     }
 
     public enum Match {
-        WS ("\\s", TokType.SKIP),
-        COMMENT ("#.+$", TokType.SKIP),
-        DIVIDER ("%"),
-        RULE ("\\W[a-z,A-Z,1-9].+$"),
-        TOKEN ("token.+$"),
-        SKIP ("skip.+$"),
+        WS ("\\s+", TokType.SKIP),
+        COMMENT ("#.*"),
+        TOKEN ("token"),
+        SKIP ("skip"),
+        ID ("[A-Z]+"),
+        RE ("\\'.*\\'"),
         $ERROR (null),
         $EOF (null),
         $LINE (null);

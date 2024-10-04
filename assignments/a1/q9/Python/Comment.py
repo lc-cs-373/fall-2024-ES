@@ -1,15 +1,15 @@
 #Comment:top#
 #Comment:import#
 
-# <comment> ::= COMMENT
-class Comment(): #Comment:class#
+# <line>:Comment ::= <COMMENT>
+class Comment(Line): #Comment:class#
 
     className = "Comment"
-    ruleString = "<comment> ::= COMMENT"
+    ruleString = "<line>:Comment ::= <COMMENT>"
+    comment = None
 
-
-    def __init__():
+    def __init__(comment):
         #Comment:init#
-
+        self.comment = comment
 
 #Comment#

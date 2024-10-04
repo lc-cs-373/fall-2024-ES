@@ -10,12 +10,11 @@ public abstract class Line /*Line:class*/ {
         Token.Match match$ = t$.match;
         switch(match$) {
         case COMMENT:
-            return One.parse(scn$,trace$);
-        case DIVIDER:
-            return Three.parse(scn$,trace$);
+            return Comment.parse(scn$,trace$);
         case TOKEN:
         case SKIP:
-            return Two.parse(scn$,trace$);
+        case ID:
+            return Ruler.parse(scn$,trace$);
         default:
             throw new PLCCException(
                 "Parse error",

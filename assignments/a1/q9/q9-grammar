@@ -1,29 +1,62 @@
 #lexical specification
-skip WS '\s'
-skip COMMENT '#.+$'
-token DIVIDER '%'
-token RULE '\W[a-z,A-Z,1-9].+$'
-token TOKEN 'token.+$'
-token SKIP 'skip.+$'
+skip WS '\s+'
+token COMMENT '#.*'
+token TOKEN 'token'
+token SKIP 'skip'
+token ID '[A-Z]+'
+token RE '\'.*\''
 
 %
 
 #syntax
 <q8> ::= <line>
-<line>:One ::= <comment> 
-<line>:Two ::= <rule>
-<line>:Three ::= <divide>
+<line>:Comment ::= <COMMENT>
+<line>:Ruler ::= <rule>
+<rule>:Skipper ::=  SKIP <ID> <RE>
+<rule>:TokenerFull ::=  <TOKEN> <ID> <RE>
+<rule>:TokenerShort ::= <ID> <RE>
 
-<comment> ::= COMMENT
+%
 
-<rule>:Skipy ::= <skip_rule>
-<rule>:Tokens ::= <token_rule>
+Q8
+%%%
+    public String toString() {
+        return line.toString();
+    }
+%%%
 
-<skip_rule> ::=  SKIP
+Comment
+%%%
+    public String toString() {
+        return comment.toString();
+    }
+%%%
 
-#<token_rule>:Expressive ::= RULE
-<token_rule>:Optional ::=  TOKEN 
-<divide> ::= DIVIDER
+Ruler
+%%%
+    public String toString() {
+        return rule.toString();
+    }
+%%%
 
+Skipper
+%%%
+    public String toString() {
+        return "skip " + id.toString() + " " + re.toString();
+    }
+%%%
 
+TokenerFull
+%%%
+    public String toString() {
+        return token.toString() + " " + id.toString() + " " + re.toString();
+    }
+%%%
+
+TokenerShort
+%%%
+    public String toString() {
+        return id.toString() + " " + re.toString();
+    }
+%%%
 
